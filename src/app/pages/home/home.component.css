@@ -1,12 +1,9 @@
 .caja {
-    border: 2px red solid;
     width: 100%;
-    height: 100%;
 }
 
 .calendar {
     display: flex;
-    border: 2px blue solid;
     justify-content: center;
     width: 100%;
 }
@@ -20,6 +17,8 @@
     padding: .5rem;
     border: solid 1px #eaeaea;
     box-shadow: 0 0 10px #e4e4e4;
+    width: 50%;
+    height: 50%;
 }
 
 div {
@@ -69,6 +68,7 @@ h2 {
     justify-content: space-between;
     align-items: center;
     align-content: center;
+    width: auto;
 }
 
 .hea-calendar h1 {
@@ -80,4 +80,32 @@ h2 {
     cursor: pointer;
     background-color: transparent;
     border: 0;
+}
+
+.agregar {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.example-button-row {
+    display: table-cell;
+    width: 390px;
+}
+
+.recordatorios {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.contenedor {
+    display: flex;
+    justify-content: center;
+}
+
+.caja_re {
+    display: flex;
+    justify-content: center;
+    margin: 20px 40px 20px 40px;
 }

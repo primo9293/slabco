@@ -6,7 +6,7 @@
                 <div>
                     <button (click)="changeMonth(-1)" class="btn-prev">Antes</button>
                 </div>
-                <h1>{{dateSelect | date:'MMMM, yyyy'}}</h1>
+                <h1>{{dateSelectCa | date:'MMMM, yyyy'}}</h1>
                 <div>
                     <button (click)="changeMonth(1)" class="btn-next">Siguiente</button>
                 </div>
@@ -20,4 +20,43 @@
             </ol>
         </div>
     </div>
+    <div class="agregar">
+        <button mat-raised-button color="primary" (click)="agregar()">
+            <span class="material-icons">
+            add
+            </span></button>
+    </div>
 </div>
+<div class="recordatorios">
+
+    <div class="col caja_re">
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Titulo</th>
+                    <th>Ciudad</th>
+                    <th>Hora</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Reunión en el colegio</td>
+                    <td>Bogota</td>
+                    <td>Fecha</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Clase de Arquitectura</td>
+                    <td>Bogota</td>
+                    <td>Fecha</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+</div>
+<!-- <mat-spinner></mat-spinner> -->
