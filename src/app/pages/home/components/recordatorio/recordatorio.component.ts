@@ -31,7 +31,7 @@ export class RecordatorioComponent implements OnInit {
       id: ['', []],
       titulo: ['', [ Validators.required]],
       ciudad: ['', [ Validators.required]],
-      fecha: [''],
+      fecha: ['', [ Validators.required]],
       hora: ['', [ Validators.required ]],
       color: ['', [ ]],
     });

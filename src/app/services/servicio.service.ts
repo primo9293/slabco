@@ -40,11 +40,11 @@ export class ServicioService {
     },
     {
       id: 6,
-      color: 'black',
-      titulo: 'b',
+      color: '#2626E1',
+      titulo: 'Partido F5',
       ciudad: '1',
-      fecha: 'd',
-      hora: '09:45'
+      fecha: '2021-03-19',
+      hora: '20:45'
     }
   ]
 
