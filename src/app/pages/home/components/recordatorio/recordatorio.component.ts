@@ -19,18 +19,10 @@ export class RecordatorioComponent implements OnInit {
               private router: Router,
               private activeRoute: ActivatedRoute,
               private servicioService: ServicioService) { 
-    // this.buildForm();
   }
 
   ngOnInit(): void {
     this.buildForm();
-    /* this.activeRoute.params.subscribe(( params: Params ) => {
-      this.id = params.id;
-      let a  = this.servicioService.obtenerDatosId(this.id)
-      this.datos = a 
-      console.log('datos',this.datos);
-    });
-    this.patchValue(this.datos[0]); */  
     this.cargarDatos() 
   }
 
@@ -74,20 +66,7 @@ export class RecordatorioComponent implements OnInit {
         this.boton = 'Actualizar'
         this.patchValue(this.datos[0]); 
       }
-      /* if (!this.id) {
-        console.log('entrooo');
-        return
-      }
-      console.log('pasopor');
-      let a  = this.servicioService.obtenerDatosId(this.id)
-      this.datos = a  */
     });
-   /*  if(this.id === 1){
-      this.boton = 'Crear'
-    } else {
-      this.boton = 'Actualizar'
-      this.patchValue(this.datos[0]); 
-    } */
   }
 
 

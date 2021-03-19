@@ -127,3 +127,11 @@ h2 {
 .margin {
     margin-right: 2px;
 }
+
+.seleccionado {
+    background: rgb(107, 156, 248) !important;
+}
+
+.seleccionadoA {
+    background: rgb(211, 231, 191);
+}

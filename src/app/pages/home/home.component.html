@@ -14,14 +14,13 @@
             <ol>
                 <li *ngFor="let day of dayss" class="day-name">{{day | slice:0:3}}</li>
 
-                <li (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'" *ngFor="let day of monthSelect;let first = first">
+                <li (click)="clickDay(day)" [style.gridColumnStart]="first ? day?.indexWeek : 'auto'" *ngFor="let day of monthSelect;let first = first" [class.seleccionado]="day?.value == selectedA" [class.seleccionadoA]="day?.value == selectedActua">
                     <span>{{day?.value}}</span>
                 </li>
             </ol>
         </div>
     </div>
     <div class="agregar">
-        <!-- <button mat-raised-button color="primary" (click)="agregar()" [routerLink]="['recordatorio', 1]"> -->
         <button mat-raised-button color="primary" [routerLink]="['/recordatorio', 1]">
             <span class="material-icons">
             add
@@ -54,7 +53,7 @@
                     <td>{{item.hora}}</td>
                     <td>
                         <button class="btn btn-primary mr-2" [routerLink]="['/recordatorio', item.id]">Editar</button>
-                        <button class="btn btn-danger ml-2">Eliminar</button>
+                        <button class="btn btn-danger ml-2" (click)="eliminar(item.id)">Eliminar</button>
                     </td>
                 </tr>
             </tbody>

@@ -48,6 +48,8 @@ export class ServicioService {
     }
   ]
 
+  public fechaActual: string = ''
+
   constructor() { 
   }
 
@@ -62,6 +64,7 @@ export class ServicioService {
   }
 
   crearDatos(data){
+    this.fechaActual = data.fecha
     console.log(this.recordatorios);
     // console.log(this.recordatorios.length);
     let tamano = this.recordatorios.length
@@ -72,16 +75,17 @@ export class ServicioService {
   }
 
   actualizarDatos(data){
-    console.log(this.recordatorios);
+    this.fechaActual = data.fecha
+    // console.log(this.recordatorios);
     let id = data.id
-    console.log(data.id);
+    // console.log(data.id);
     const index = this.recordatorios.findIndex(ele => ele.id == id);
     // console.log('index',index);
     if (index == -1) {
       return null
     }
     this.recordatorios.splice(index,1,data)
-    console.log(this.recordatorios);
+    // console.log(this.recordatorios);
     // console.log('id',id);
   }
 

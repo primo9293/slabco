@@ -43,27 +43,41 @@ export class HomeComponent implements OnInit {
   dateValue: any;
   mes: any
   anio: any
+  fecha_actual: string
 
   recordatorios: any = []
   recordatoriosFiltra: any = []
   dia: any
   hora: any
   id = 5
+  selectedA: any
+  selectedActua: any
 
-  constructor(/* public dialog: MatDialog */
-              private servicioService: ServicioService){
+  constructor(private servicioService: ServicioService){
     }
 
   ngOnInit(): void {
     this.obtenerDatos()
-    this.mes = moment().format("MM");
-    this.anio = moment().format("YYYY"); 
-    this.dia = moment().format("YYYY-MM-DD")
-    this.hora = moment().format('HH:mm:ss')
-    // console.log(this.dia);
-    // console.log(this.hora);
-    this.getDaysFromDate(this.mes, this.anio)
-    this.filtrar(this.dia)
+    this.obtenerFechaActual()
+  }
+
+  obtenerFechaActual(){
+    this.fecha_actual = this.servicioService.fechaActual
+    this.selectedA = moment().format("DD")
+    if (this.fecha_actual.length !== 0) {
+      let anio = this.fecha_actual.substring(0,4)
+      let mes = this.fecha_actual.substring(5,7)
+      let dia = this.fecha_actual.substring(8,10)
+      this.selectedActua = dia
+      this.getDaysFromDate(mes, anio)
+      this.filtrar(this.fecha_actual)
+    } else {
+      this.mes = moment().format("MM");
+      this.anio = moment().format("YYYY"); 
+      this.dia = moment().format("YYYY-MM-DD")
+      this.getDaysFromDate(this.mes, this.anio)
+      this.filtrar(this.dia)
+    }
   }
 
 
@@ -80,7 +94,6 @@ export class HomeComponent implements OnInit {
     const arrayDays = Object.keys([...Array(numberDays)]).map((a: any) => {
       a = parseInt(a) + 1;
       const dayObject = moment(`${year}-${month}-${a}`);
-      // console.log('dayObject',dayObject);
       return {
         name: dayObject.format("dddd"),
         value: a,
@@ -88,7 +101,6 @@ export class HomeComponent implements OnInit {
       };
     });
     this.monthSelect = arrayDays;
-    // console.log('this.monthSelect',this.monthSelect);
   }
 
   changeMonth(flag) {
@@ -102,44 +114,39 @@ export class HomeComponent implements OnInit {
   }
 
   clickDay(day) {
+    console.log('dayyyy',day);
+    this.selectedActua = day.value
     const monthYear = this.dateSelect.format('YYYY-MM')
     const parse = `${monthYear}-${day.value}`
     this.dia = parse
     const objectDate = moment(parse)
     this.dateValue = objectDate;
-    // console.log('monthYear',monthYear);
-    console.log('parse',parse);
-    // console.log('objectDate',objectDate);
     this.filtrar(parse)
   }
 
   obtenerDatos(){
     this.recordatorios = this.servicioService.obtenerDatos()
-    console.log('this.recordatorios', this.recordatorios);
+    // console.log('this.recordatorios', this.recordatorios);
   }
 
   agregar(){
     console.log('Agregar');
     console.log(this.dia);
-   
   }
 
   filtrar(dia: any){
-    // console.log('dia',dia);
     this.recordatoriosFiltra = []
     this.recordatorios.filter(elem => {
-      // console.log(elem.fecha);
       elem.fecha == dia
       if(elem.fecha == dia){
-        // console.log('entro');
         this.recordatoriosFiltra.push(elem)
       }
     })
-    // console.log('a',this.recordatoriosFiltra);
-
-    // this.recordatoriosFiltra = this.recordatorios.filter
   }
 
-
+  eliminar(id){
+    this.servicioService.eliminarDatos(id)
+    this.filtrar(this.dia)
+  }
   
 }
