@@ -18,6 +18,25 @@ export class HomeComponent implements OnInit {
     "Domingo"
   ];
 
+  ciudades: any = [
+    {
+      id: 1,
+      value: 'Bogota' 
+    },
+    {
+      id: 2,
+      value: 'Medellin' 
+    },
+    {
+      id: 3,
+      value: 'Cali' 
+    },
+    {
+      id: 4,
+      value: 'Cartagena' 
+    },
+  ]
+
   monthSelect: any[];
   dateSelect: any;
   dateSelectCa: any;

@@ -10,7 +10,7 @@ export class ServicioService {
       id: 2,
       color: '#48E126',
       titulo: 'Reunión en el colegio',
-      ciudad: 1,
+      ciudad: '1',
       fecha: '2021-03-18',
       hora: '20:52'
     },
@@ -18,7 +18,7 @@ export class ServicioService {
       id: 3,
       color: '#E1D326',
       titulo: 'Clase de Arquitectura',
-      ciudad: 2,
+      ciudad: '2',
       fecha: '2021-03-18',
       hora: '13:03'
     },
@@ -26,7 +26,7 @@ export class ServicioService {
       id: 4,
       color: '#2626E1',
       titulo: 'Clase de Electiva',
-      ciudad: 3,
+      ciudad: '3',
       fecha: '2021-03-20',
       hora: '18:35'
     },
@@ -34,7 +34,7 @@ export class ServicioService {
       id: 5,
       color: '#9C43C8',
       titulo: 'Reunion de la Asamblea',
-      ciudad: 4,
+      ciudad: '4',
       fecha: '2021-03-25',
       hora: '07:20'
     },
@@ -42,7 +42,7 @@ export class ServicioService {
       id: 6,
       color: 'black',
       titulo: 'b',
-      ciudad: 1,
+      ciudad: '1',
       fecha: 'd',
       hora: '09:45'
     }
@@ -62,11 +62,27 @@ export class ServicioService {
   }
 
   crearDatos(data){
+    console.log(this.recordatorios);
+    // console.log(this.recordatorios.length);
+    let tamano = this.recordatorios.length
+    data.id = tamano + 2
+    // console.log('data.idddd',data);
     this.recordatorios.push(data)
+    console.log(this.recordatorios);
   }
 
-  actualizarDatos(){
-    
+  actualizarDatos(data){
+    console.log(this.recordatorios);
+    let id = data.id
+    console.log(data.id);
+    const index = this.recordatorios.findIndex(ele => ele.id == id);
+    // console.log('index',index);
+    if (index == -1) {
+      return null
+    }
+    this.recordatorios.splice(index,1,data)
+    console.log(this.recordatorios);
+    // console.log('id',id);
   }
 
   eliminarDatos(id){

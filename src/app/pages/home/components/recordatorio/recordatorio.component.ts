@@ -13,6 +13,7 @@ export class RecordatorioComponent implements OnInit {
   form: FormGroup;
   id: any;
   datos: any = []
+  boton: string
 
   constructor(private formBuilder: FormBuilder,
               private router: Router,
@@ -23,13 +24,14 @@ export class RecordatorioComponent implements OnInit {
 
   ngOnInit(): void {
     this.buildForm();
-    this.activeRoute.params.subscribe(( params: Params ) => {
+    /* this.activeRoute.params.subscribe(( params: Params ) => {
       this.id = params.id;
       let a  = this.servicioService.obtenerDatosId(this.id)
       this.datos = a 
       console.log('datos',this.datos);
     });
-    this.patchValue(this.datos[0]);   
+    this.patchValue(this.datos[0]); */  
+    this.cargarDatos() 
   }
 
   private buildForm() {
@@ -42,6 +44,52 @@ export class RecordatorioComponent implements OnInit {
       color: ['', [ ]],
     });
   }
+
+  get tituloField(){
+    return this.form.get('titulo');
+  }
+
+  get ciudadField(){
+    return this.form.get('ciudad');
+  }
+
+
+  get horaField(){
+    return this.form.get('hora');
+  }
+
+  
+  cargarDatos(){
+    this.activeRoute.params.subscribe(( params: Params ) => {
+      this.id = params.id;
+      console.log(this.id);
+      if(this.id === '1'){
+        console.log('entro111');
+        this.boton = 'Crear'
+        return
+      } else {
+        console.log('diferente111');
+        let a  = this.servicioService.obtenerDatosId(this.id)
+        this.datos = a 
+        this.boton = 'Actualizar'
+        this.patchValue(this.datos[0]); 
+      }
+      /* if (!this.id) {
+        console.log('entrooo');
+        return
+      }
+      console.log('pasopor');
+      let a  = this.servicioService.obtenerDatosId(this.id)
+      this.datos = a  */
+    });
+   /*  if(this.id === 1){
+      this.boton = 'Crear'
+    } else {
+      this.boton = 'Actualizar'
+      this.patchValue(this.datos[0]); 
+    } */
+  }
+
 
   patchValue(data?) {
     this.form.patchValue({
@@ -56,6 +104,14 @@ export class RecordatorioComponent implements OnInit {
   }
 
   creaActua(){
+    const data = this.form.value
+    if (this.boton === 'Crear') {
+      this.servicioService.crearDatos(data)
+      this.router.navigate(['./home']);
+    } else {
+      this.servicioService.actualizarDatos(data)
+      this.router.navigate(['./home']);
+    }
     console.log(this.form.value);
   }
 

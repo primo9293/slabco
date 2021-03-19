@@ -20,6 +20,7 @@
                             <label class="control-label text-right col-md-1">Titulo</label>
                             <div class="col-md-6">
                                 <input type="text" placeholder="Titulo" class="form-control" formControlName="titulo" matInput>
+                                <small class="form-control-feedback" *ngIf="tituloField.hasError('required')"> Campo requerido </small>
                             </div>
                             <div class="col-md-3"></div>
                         </div>
@@ -28,11 +29,12 @@
                             <label class="control-label text-right col-md-1">Ciudad</label>
                             <div class="col-md-6">
                                 <select class="form-control custom-select" formControlName="ciudad">
-                                    <option value=1>Bogota</option>
-                                    <option value=2>Medellin</option>
-                                    <option value=3>Cali</option>
-                                    <option value=4>Cartagena</option>
+                                    <option value='1'>Bogota</option>
+                                    <option value='2'>Medellin</option>
+                                    <option value='3'>Cali</option>
+                                    <option value='4'>Cartagena</option>
                                 </select>
+                                <small class="form-control-feedback" *ngIf="ciudadField.hasError('required')"> Campo requerido </small>
                                 <!-- <input type="text" placeholder="ciudad" class="form-control" formControlName="ciudad" matInput> -->
                             </div>
                             <div class="col-md-3"></div>
@@ -51,6 +53,7 @@
                             <label class="control-label text-right col-md-1">Hora</label>
                             <div class="col-md-2">
                                 <input type="time" placeholder="Hora" class="form-control" formControlName="hora" matInput>
+                                <small class="form-control-feedback" *ngIf="horaField.hasError('required')"> Campo requerido </small>
                             </div>
                             <div class="col-md-7"></div>
                         </div>
@@ -68,7 +71,7 @@
                             <div class="col-md-12">
                                 <div class="row">
                                     <div class="offset-sm-3 col-md-9">
-                                        <button type="submit" class="btn btn-primary mr-2 ancho">Crear</button>
+                                        <button type="submit" class="btn btn-primary mr-2 ancho" [disabled]="form.invalid">{{boton}}</button>
                                         <button (click)="cancelar()" class="btn btn-danger ml-2 ancho">Cancelar</button>
                                     </div>
                                 </div>

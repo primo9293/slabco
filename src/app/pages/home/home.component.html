@@ -22,7 +22,7 @@
     </div>
     <div class="agregar">
         <!-- <button mat-raised-button color="primary" (click)="agregar()" [routerLink]="['recordatorio', 1]"> -->
-        <button mat-raised-button color="primary" [routerLink]="['/recordatorio', id]">
+        <button mat-raised-button color="primary" [routerLink]="['/recordatorio', 1]">
             <span class="material-icons">
             add
             </span>
@@ -38,7 +38,7 @@
                 <tr>
                     <th></th>
                     <th>Titulo</th>
-                    <th>Ciudad</th>
+                    <th>fecha</th>
                     <th>Hora</th>
                     <th>Acciones</th>
                 </tr>
@@ -49,10 +49,11 @@
                         <div class="circulo" [style.background]="item.color"></div>
                     </td>
                     <td>{{item.titulo}}</td>
-                    <td>{{item.ciudad}}</td>
+                    <!-- <td *ngFor="let ciudad of ciudades" *ngIf="ciudad.id === item.ciudad">{{ciudad.value}}</td> -->
                     <td>{{item.fecha}}</td>
+                    <td>{{item.hora}}</td>
                     <td>
-                        <button class="btn btn-primary mr-2">Editar</button>
+                        <button class="btn btn-primary mr-2" [routerLink]="['/recordatorio', item.id]">Editar</button>
                         <button class="btn btn-danger ml-2">Eliminar</button>
                     </td>
                 </tr>
