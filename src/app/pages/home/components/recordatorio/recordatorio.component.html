@@ -1,0 +1,82 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h4 class="m-b-0 text-white">Por favor ingrese los datos</h4>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="form" class="form-horizontal form-bordered" (ngSubmit)="creaActua()">
+                    <div class="form-body">
+                        <!-- <div class="form-group row">
+                            <div class="col-md-2"></div>
+                            <label class="control-label text-right col-md-1">Id</label>
+                            <div class="col-md-6">
+                                <input type="id" placeholder="Id" class="form-control" formControlName="id" matInput>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div> -->
+                        <div class="form-group row">
+                            <div class="col-md-2"></div>
+                            <label class="control-label text-right col-md-1">Titulo</label>
+                            <div class="col-md-6">
+                                <input type="text" placeholder="Titulo" class="form-control" formControlName="titulo" matInput>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2"></div>
+                            <label class="control-label text-right col-md-1">Ciudad</label>
+                            <div class="col-md-6">
+                                <select class="form-control custom-select" formControlName="ciudad">
+                                    <option value=1>Bogota</option>
+                                    <option value=2>Medellin</option>
+                                    <option value=3>Cali</option>
+                                    <option value=4>Cartagena</option>
+                                </select>
+                                <!-- <input type="text" placeholder="ciudad" class="form-control" formControlName="ciudad" matInput> -->
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2"></div>
+                            <label class="control-label text-right col-md-1">Fecha</label>
+                            <div class="col-md-6">
+                                <!-- <input type="date" class="form-control" placeholder="dd/mm/yyyy" formControlName="fecha" matInput> -->
+                                <input type="date" class="form-control" placeholder="dd/mm/yyyy" formControlName="fecha" matInput>
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2"></div>
+                            <label class="control-label text-right col-md-1">Hora</label>
+                            <div class="col-md-2">
+                                <input type="time" placeholder="Hora" class="form-control" formControlName="hora" matInput>
+                            </div>
+                            <div class="col-md-7"></div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-2"></div>
+                            <label class="control-label text-right col-md-1">Color</label>
+                            <div class="col-md-2">
+                                <input type="color" placeholder="Color" class="form-control" formControlName="color" matInput>
+                            </div>
+                            <div class="col-md-7"></div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="offset-sm-3 col-md-9">
+                                        <button type="submit" class="btn btn-primary mr-2 ancho">Crear</button>
+                                        <button (click)="cancelar()" class="btn btn-danger ml-2 ancho">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

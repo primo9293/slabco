@@ -1,8 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import * as moment from 'moment'
-/* import { MatDialog, MatDialogConfig } from '@angular/material/dialog'
-import { DialogRecordaComponent } from './components/dialog-recorda/dialog-recorda.component';
- */
+import { ServicioService } from '../../services/servicio.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -27,18 +25,26 @@ export class HomeComponent implements OnInit {
   mes: any
   anio: any
 
-  recordatorios: any
+  recordatorios: any = []
+  recordatoriosFiltra: any = []
   dia: any
+  hora: any
+  id = 5
 
-  constructor(/* public dialog: MatDialog */){
+  constructor(/* public dialog: MatDialog */
+              private servicioService: ServicioService){
     }
 
   ngOnInit(): void {
+    this.obtenerDatos()
     this.mes = moment().format("MM");
     this.anio = moment().format("YYYY"); 
     this.dia = moment().format("YYYY-MM-DD")
-    console.log(this.dia);
+    this.hora = moment().format('HH:mm:ss')
+    // console.log(this.dia);
+    // console.log(this.hora);
     this.getDaysFromDate(this.mes, this.anio)
+    this.filtrar(this.dia)
   }
 
 
@@ -77,42 +83,42 @@ export class HomeComponent implements OnInit {
   }
 
   clickDay(day) {
-    // console.log(day);
     const monthYear = this.dateSelect.format('YYYY-MM')
     const parse = `${monthYear}-${day.value}`
     this.dia = parse
     const objectDate = moment(parse)
     this.dateValue = objectDate;
-    console.log('monthYear',monthYear);
+    // console.log('monthYear',monthYear);
     console.log('parse',parse);
-    console.log('objectDate',objectDate);
+    // console.log('objectDate',objectDate);
+    this.filtrar(parse)
+  }
 
-    /* const dialogRef = this.dialog.open(DialogRecordaComponent as any, {
-      disableClose: true,
-      panelClass: 'override-style',
-      data: {
-        title: 'Cambios aún sin guardar',
-        message: `¿Desea guardar los cambios pendientes?`
-      }
-    })
-
-    dialogRef.afterClosed().subscribe(res => {
-      if (res) {
-        if (res.opcion == 'Aceptar') {
-         
-        } else if (res.opcion == 'Cancelar') {
-
-        } else if (res.opcion == 'Descartar') {
-         
-        }
-      }
-    }) */
-  
+  obtenerDatos(){
+    this.recordatorios = this.servicioService.obtenerDatos()
+    console.log('this.recordatorios', this.recordatorios);
   }
 
   agregar(){
     console.log('Agregar');
     console.log(this.dia);
+   
+  }
+
+  filtrar(dia: any){
+    // console.log('dia',dia);
+    this.recordatoriosFiltra = []
+    this.recordatorios.filter(elem => {
+      // console.log(elem.fecha);
+      elem.fecha == dia
+      if(elem.fecha == dia){
+        // console.log('entro');
+        this.recordatoriosFiltra.push(elem)
+      }
+    })
+    // console.log('a',this.recordatoriosFiltra);
+
+    // this.recordatoriosFiltra = this.recordatorios.filter
   }
 
 
