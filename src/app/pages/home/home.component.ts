@@ -150,5 +150,9 @@ export class HomeComponent implements OnInit {
     this.servicioService.eliminarDatos(id)
     this.filtrar(this.dia)
   }
+
+  agregarRecorColorCalen(){
+    
+  }
   
 }
