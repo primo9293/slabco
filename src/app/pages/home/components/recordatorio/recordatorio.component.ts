@@ -54,13 +54,13 @@ export class RecordatorioComponent implements OnInit {
   cargarDatos(){
     this.activeRoute.params.subscribe(( params: Params ) => {
       this.id = params.id;
-      console.log(this.id);
+      // console.log(this.id);
       if(this.id === '1'){
         console.log('entro111');
         this.boton = 'Crear'
         return
       } else {
-        console.log('diferente111');
+        // console.log('diferente111');
         let a  = this.servicioService.obtenerDatosId(this.id)
         this.datos = a 
         this.boton = 'Actualizar'
@@ -91,7 +91,7 @@ export class RecordatorioComponent implements OnInit {
       this.servicioService.actualizarDatos(data)
       this.router.navigate(['./home']);
     }
-    console.log(this.form.value);
+    // console.log(this.form.value);
   }
 
   cancelar(){

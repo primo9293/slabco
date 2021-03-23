@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import * as moment from 'moment'
 import { ServicioService } from '../../services/servicio.service';
+import { Recordatorio } from '../../models/recordatorio';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -41,17 +42,18 @@ export class HomeComponent implements OnInit {
   dateSelect: any;
   dateSelectCa: any;
   dateValue: any;
-  mes: any
-  anio: any
+
+  mes: string // any
+  anio: string // any
   fecha_actual: string
 
-  recordatorios: any = []
-  recordatoriosFiltra: any = []
-  dia: any
-  hora: any
+  recordatorios: Recordatorio[] = [] //any = []
+  recordatoriosFiltra: Recordatorio[] = [] // any = []
+  dia: string // any
+  hora: string // any
   id = 5
-  selectedA: any
-  selectedActua: any
+  selectedA: string // any
+  selectedActua: string // any
 
   constructor(private servicioService: ServicioService){
     }
@@ -114,7 +116,7 @@ export class HomeComponent implements OnInit {
   }
 
   clickDay(day) {
-    console.log('dayyyy',day);
+    // console.log('dayyyy',day);
     this.selectedActua = day.value
     const monthYear = this.dateSelect.format('YYYY-MM')
     const parse = `${monthYear}-${day.value}`
@@ -134,7 +136,7 @@ export class HomeComponent implements OnInit {
     console.log(this.dia);
   }
 
-  filtrar(dia: any){
+  filtrar(dia: string){
     this.recordatoriosFiltra = []
     this.recordatorios.filter(elem => {
       elem.fecha == dia
@@ -144,7 +146,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  eliminar(id){
+  eliminar(id: number){
     this.servicioService.eliminarDatos(id)
     this.filtrar(this.dia)
   }
